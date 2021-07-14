@@ -22,29 +22,15 @@ var universalLinks = {
    * @param {String} eventName - name of the event you are subscribing on; if null - default plugin event is used
    * @param {Function} callback - callback that is called when event is captured
    */
-  exports.subscribe = function(eventName, callback) {
+  subscribe: function(eventName, callback) {
     if (!callback) {
       console.warn('Universal Links: can\'t subscribe to event without a callback');
       return;
-    }
-
-    if (!eventName) {
-      eventName = DEFAULT_EVENT_NAME;
-    }
-
-    var innerCallback = function(msg) {
-      callback(msg.data);
-    };
-
-    exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE, [eventName]);
-  },
-
-  /**
-   * Unsubscribe from the event.
+	@@ -44,13 +44,11 @@ var universalLinks = {
    *
    * @param {String} eventName - from what event we are unsubscribing
    */
-  exports.unsubscribe = function(eventName) {
+  unsubscribe: function(eventName) {
     if (!eventName) {
       eventName = DEFAULT_EVENT_NAME;
     }
@@ -52,3 +38,5 @@ var universalLinks = {
     exec(null, null, PLUGIN_NAME, pluginNativeMethod.UNSUBSCRIBE, [eventName]);
   }
 };
+
+module.exports = universalLinks;
