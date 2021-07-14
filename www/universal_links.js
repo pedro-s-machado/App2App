@@ -39,4 +39,11 @@ var universalLinks = {
   }
 };
 
+if (!cordova.plugins) {
+    cordova.plugins = {};
+}
+
+if (!cordova.plugins.UniversalLinks) {
+    cordova.plugins.UniversalLinks = universalLinks;
+}
 module.exports = universalLinks;
