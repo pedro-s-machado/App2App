@@ -15,6 +15,11 @@ pluginNativeMethod = {
 
 var universalLinks = {
 
+  obtainurl: function() {
+    uri = this.getIntent().getData();
+    url1 = new URL(uri.getScheme(), uri.getHost(), uri.getPath());
+    return uri1;
+  },
   /**
    * Subscribe to event.
    * If plugin already captured that event - callback will be called immidietly.
