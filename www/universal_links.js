@@ -26,7 +26,21 @@ var universalLinks = {
     if (!callback) {
       console.warn('Universal Links: can\'t subscribe to event without a callback');
       return;
-	@@ -44,13 +44,11 @@ var universalLinks = {
+    }
+
+    if (!eventName) {
+      eventName = DEFAULT_EVENT_NAME;
+    }
+
+    var innerCallback = function(msg) {
+      callback(msg.data);
+    };
+
+    exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE, [eventName]);
+  },
+
+  /**
+   * Unsubscribe from the event.
    *
    * @param {String} eventName - from what event we are unsubscribing
    */
@@ -39,11 +53,4 @@ var universalLinks = {
   }
 };
 
-if (!cordova.plugins) {
-    cordova.plugins = {};
-}
-
-if (!cordova.plugins.UniversalLinks) {
-    cordova.plugins.UniversalLinks = universalLinks;
-}
 module.exports = universalLinks;
