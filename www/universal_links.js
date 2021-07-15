@@ -33,9 +33,9 @@ var universalLinks = {
     }
 
     var innerCallback = function(msg) {
-      console.log("Callback chamada iniciada")
+      console.log('Callback chamada iniciada')
       callback(msg.data);
-      console.log("Callback chamada finalizada")
+      console.log('Callback chamada finalizada')
     };
 
     exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE, [eventName]);
