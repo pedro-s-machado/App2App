@@ -23,14 +23,14 @@
     <clobbers target="universalLinks"/>
   </js-module>
 
-<!-- Hooks 
+<!-- Hooks -->
   <hook src="hooks/afterPrepareHook.js" type="after_prepare"/>
   <hook src="hooks/beforePluginInstallHook.js" type="before_plugin_install" />
--->
+
   <platform name="ios">
-    <!-- Hooks 
+     
     <hook src="hooks/iosBeforePrepareHook.js" type="before_prepare" />
--->
+
 <!-- Plugin inclusion in Cordova config.xml  -->
     <config-file parent="/*" target="config.xml">
       <feature name="UniversalLinks">
@@ -86,6 +86,15 @@
         <param name="onload" value="true"/>
       </feature>
     </config-file>
+    
+    
+    <config-file parent="/*" target="res/xml/config.xml">
+      <universal-links>
+          <host name="pedro-depplinktest.000webhostapp.com">
+              <path url="/" />
+          </host>
+      </universal-links>
+    </config-file>
 
 <!-- Java Library Sources -->
 <!-- sources for package: com.nordnetab.cordova.ul.js -->
@@ -111,6 +120,7 @@
         <data android:scheme="https" android:host="pedro-depplinktest.000webhostapp.com" />
       </intent-filter>
     </config-file>
+    
 
   </platform>
 </plugin>
