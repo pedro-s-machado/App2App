@@ -58,6 +58,7 @@ public class UniversalLinksPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
         boolean isHandled = true;
+        console.log('Execute');
         if (JSAction.SUBSCRIBE.equals(action)) {
             subscribeForEvent(args, callbackContext);
         } else if (JSAction.UNSUBSCRIBE.equals(action)) {
@@ -156,6 +157,7 @@ public class UniversalLinksPlugin extends CordovaPlugin {
      * @param callback to what callback we are sending the message
      */
     private void sendMessageToJs(JSMessage message, CallbackContext callback) {
+        console.log('sendMessageToJS');
         final PluginResult result = new PluginResult(PluginResult.Status.OK, message);
         result.setKeepCallback(true);
         callback.sendPluginResult(result);
